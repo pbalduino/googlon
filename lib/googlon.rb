@@ -108,3 +108,7 @@ jjpqkmbn lzzsnng'
 FOO = ['m', 'p', 'c', 'w', 'f']
 
 BAR = ('a'..'z').to_a - FOO
+
+def count_prepositions(words)
+  words.count{|word| word.size == 4 && !word.include?('h') && FOO.include?(word[-1])}
+end

@@ -1,4 +1,4 @@
-# decoding: ISO8859-1
+# decoding: UTF-8
 
 require 'rspec'
 require 'googlon'
@@ -11,8 +11,8 @@ describe 'Googlon' do
     @words_b = TEXT_B.split(WHITESPACE).delete_if{|x| x.empty?}
   end
 
-  context 'Primeiramente, as letras Googlon s�o classificadas em dois grupos:' do
-    it 'm, p, c, w e f sao chamadas "letras tipo foo"' do
+  context 'Primeiramente, as letras Googlon são classificadas em dois grupos:' do
+    it 'm, p, c, w e f são chamadas "letras tipo foo"' do
       FOO.should =~ ['m', 'p', 'c', 'w', 'f']
     end
 
@@ -23,51 +23,51 @@ describe 'Googlon' do
     end
   end
 
-  context 'Os linguistas descobriram que as preposi??es em Googlon s?o as 
-  palavras de 4 letras que terminam numa letra tipo foo, mas onde n?o ocorre a letra h.' do
-    it 'Portanto, ? f?cil ver que existem 21 preposi??es no Texto A.' do
+  context 'Os linguistas descobriram que as preposições em Googlon são as 
+  palavras de 4 letras que terminam numa letra tipo foo, mas onde não ocorre a letra h.' do
+    it 'Portanto, é fácil ver que existem 21 preposições no Texto A.' do
       count_prepositions(@words_a).should == 21
     end
 
-    it 'E no Texto B, quantas preposi??es existem?' do
+    it 'E no Texto B, quantas preposições existem?' do
       puts ''
-      puts "Existem #{count_prepositions(@words_b)} preposi??es em B"
+      puts "Existem #{count_prepositions(@words_b)} preposições em B"
     end
 
   end
 
-  context 'Um outro fato interessante descoberto pelos linguistas ? que, no 
-  Googlon, os verbos sempre s?o palavras de 6 ou mais letras que terminam numa 
-  letra tipo bar. Al?m disso, se um verbo come?a com uma letra tipo bar, o 
-  verbo est? em primeira pessoa.' do
-    it 'Assim, lendo o Texto A, ? poss?vel identificar 227 verbos no texto' do
+  context 'Um outro fato interessante descoberto pelos linguistas é que, no 
+  Googlon, os verbos sempre são palavras de 6 ou mais letras que terminam numa 
+  letra tipo bar. Além disso, se um verbo começa com uma letra tipo bar, o 
+  verbo está em primeira pessoa.' do
+    it 'Assim, lendo o Texto A, é poss?vel identificar 227 verbos no texto' do
       count_verbs(@words_a).should == 227
     end
 
-    it 'dos quais 167 est?o em primeira pessoa' do
+    it 'dos quais 167 estão em primeira pessoa' do
       count_first_person_verbs(@words_a).should == 167
     end
 
-    it 'J? no Texto B, quantos s?o os verbos?' do
+    it 'J? no Texto B, quantos são os verbos?' do
      puts ''
      puts "Existem #{count_verbs(@words_b)} verbos em B"
      puts "Existem #{count_first_person_verbs(@words_b)} verbos em primeira pessoa em B"
     end
   end
 
-  context 'Um professor universit?rio utilizar? os textos A e B para ensinar o 
+  context 'Um professor universitário utilizará os textos A e B para ensinar o 
   Googlon aos alunos. Para ajudar os alunos a compreender o texto, esse 
-  professor precisa criar uma lista de vocabul?rio para cada texto, isto ?, 
+  professor precisa criar uma lista de vocabulário para cada texto, isto é, 
   uma lista ordenada (e sem repeti??es) das palavras que aparecem em cada um dos textos.' do
 
-    context 'Essas listas devem estar ordenadas e n?o podem conter repeti??es 
-    de palavras. No Googlon, assim como no nosso alfabeto, as palavras s?o 
-    ordenadas lexicograficamente, mas o problema ? que no Googlon, a ordem das 
-    letras no alfabeto ? diferente da nossa. O alfabeto Googlon, em ordem, ?: 
+    context 'Essas listas devem estar ordenadas e n?o podem conter repetições 
+    de palavras. No Googlon, assim como no nosso alfabeto, as palavras são 
+    ordenadas lexicograficamente, mas o problema é que no Googlon, a ordem das 
+    letras no alfabeto é diferente da nossa. O alfabeto Googlon, em ordem, é: 
     xmgnqlvtdrbczjwfkhps. Assim, ao fazer essas listas, o professor deve respeitar 
-    a ordem alfab?tica Googlon.' do
+    a ordem alfabética Googlon.' do
 
-      it 'O professor preparou a lista de vocabul?rio para o Texto A:' do
+      it 'O professor preparou a lista de vocabulário para o Texto A:' do
         lexicon_a = 'xmlvlnqf xmprfz xghj xgstwjnk xgswt xnxxfq xntfqwqw xnpkxs xnsdhthr 
         xqz xqpklxqm xvgvph xvclcnm xvpptsp xtsrpx xdnm xdpd xrb xrzmqtj xbxzzl xcnqwtt 
         xcddw xcrxjrwj xzqn xzs xjwsld xkvr xkvfwpr xhkbx mxcsvf mxpxxt mmmgskk mgn mglxhh 
@@ -121,7 +121,7 @@ describe 'Googlon' do
 
       end
 
-      it 'Como seria a lista de vocabul?rio do Texto B?' do
+      it 'Como seria a lista de vocabulário do Texto B?' do
         puts ''
         lexicon(@words_b).each{|word| print "#{word} "}
         puts ''
@@ -129,29 +129,29 @@ describe 'Googlon' do
     end
   end
 
-  context 'Mas como os Googlons escrevem n?meros? Bem, no Googlon, as palavras 
-  tamb?m s?o n?meros dados em base 20, onde cada letra ? um d?gito, e os d?gitos 
-  s?o ordenados do menos significativo para o mais significativo (o inverso do 
-  nosso sistema). Ou seja, a primeira posi??o ? a unidade, a segunda posi??o vale 
-  20, a terceira vale 400, e assim por diante. Os valores das letras s?o dados 
-  pela ordem em que elas aparecem no alfabeto Googlon (que ? diferente da nossa 
+  context 'Mas como os Googlons escrevem números? Bem, no Googlon, as palavras 
+  também são números dados em base 20, onde cada letra é um dígito, e os dígitos 
+  são ordenados do menos significativo para o mais significativo (o inverso do 
+  nosso sistema). Ou seja, a primeira posição é a unidade, a segunda posição vale 
+  20, a terceira vale 400, e assim por diante. Os valores das letras são dados 
+  pela ordem em que elas aparecem no alfabeto Googlon (que é diferente da nossa 
   ordem, como vimos acima). Ou seja, a primeira letra do alfabeto Googlon representa 
-  o d?gito 0, a segunda representa o d?gito 1, e assim por diante.' do
-    it 'Por exemplo, a palavra zdbfbq tem o valor num?rico de 14524172' do
+  o dígito 0, a segunda representa o dígito 1, e assim por diante.' do
+    it 'Por exemplo, a palavra zdbfbq tem o valor numérico de 14524172' do
       convert_number('zdbfbq').should == 14524172
     end
   end
 
-  context 'Os Googlons consideram um n�mero bonito se ele satizfaz essas duas propriedades:
-  - � maior ou igual a 489954
-  - � divis�vel por 4' do
-    it 'Ao consideramos o Texto A como uma lista de n�meros (isto �, interpretando 
-    cada palavra como um n�mero usando a conven��o explicada acima), notamos que 
-    existem 96 n�meros bonitos distintos.' do
+  context 'Os Googlons consideram um número bonito se ele satizfaz essas duas propriedades:
+  - é maior ou igual a 489954
+  - é divisível por 4' do
+    it 'Ao consideramos o Texto A como uma lista de números (isto é, interpretando 
+    cada palavra como um número usando a convenção explicada acima), notamos que 
+    existem 96 números bonitos distintos.' do
       pretty_numbers(@words_a).should == 96
     end
 
-    it 'E no Texto B, quantos n�meros bonitos distintos existem?' do
+    it 'E no Texto B, quantos números bonitos distintos existem?' do
       puts "Existem #{pretty_numbers(@words_b)} numeros bonitos em B"
     end
   end

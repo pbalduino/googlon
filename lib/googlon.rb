@@ -105,9 +105,13 @@ chkkz rwv lfbqjt qfdzd wmz xdmxqqh mzdgfrgg lfb kzvmqhd smmrq qgpjr dljhvxb
 cpsmszlf njczxddf vsl ztnkcwpr kkdb rvfcs hsdc tfzpgfhn mpr qtcqpmmm gvp 
 jjpqkmbn lzzsnng'
 
-FOO = ['m', 'p', 'c', 'w', 'f']
+FOO   = ['m', 'p', 'c', 'w', 'f']
 
-BAR = ('a'..'z').to_a - FOO
+BAR   = ('a'..'z').to_a - FOO
+
+GOOGLON_ALPHABET  = 'xmgnqlvtdrbczjwfkhps'
+GOOGLON_ORDER     = GOOGLON_ALPHABET.chars.to_a
+NATIVE_ORDER      = GOOGLON_ORDER.sort
 
 def count_prepositions(words)
   words.count{|word| word.size == 4 && !word.include?('h') && FOO.include?(word[-1])}
@@ -121,10 +125,50 @@ def count_first_person_verbs(words)
   list_first_person_verbs(words).size
 end
 
+def lexicon(words)
+  list = {}
+  words.each do |word|
+    list[convert(word)] = word
+  end
+  result = []
+  
+  list.sort.each{|key, value| result << value}
+
+  result
+
+end
+
+def convert_number(number)
+  result = 0
+  number.size.times do |i|
+    power = 20 ** i
+    result += GOOGLON_ALPHABET.index(number[i]) * power
+  end
+  result
+end
+
+private
 def list_verbs(words)
   words.delete_if{|word| word.size < 6 }.delete_if{|word| FOO.include?(word[-1])}
 end
 
 def list_first_person_verbs(words)
   list_verbs(words).delete_if {|word| FOO.include? word[0]}
+end
+
+def convert(word)
+  result = ''
+  ord = map
+  word.chars.each {|char| result += ord[char]}
+
+  result
+end
+
+def map
+  result = {}
+  NATIVE_ORDER.size.times do |i|
+    result[GOOGLON_ORDER[i]] = NATIVE_ORDER[i]
+  end
+
+  result
 end

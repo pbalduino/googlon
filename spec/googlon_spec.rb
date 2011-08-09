@@ -4,7 +4,7 @@ require 'rspec'
 require 'googlon'
 
 describe 'Googlon' do
-  before :all do
+  before :each do
     @words_a = TEXT_A.split(/[ \n\r]/).delete_if{|x| x.empty?}
     @words_b = TEXT_B.split(/[ \n\r]/).delete_if{|x| x.empty?}
   end
@@ -28,9 +28,29 @@ describe 'Googlon' do
     end
 
     it 'E no Texto B, quantas preposições existem?' do
+      puts ''
       puts "Existem #{count_prepositions(@words_b)} preposições em B"
     end
 
+  end
+
+  context 'Um outro fato interessante descoberto pelos linguistas é que, no 
+  Googlon, os verbos sempre são palavras de 6 ou mais letras que terminam numa 
+  letra tipo bar. Além disso, se um verbo começa com uma letra tipo bar, o 
+  verbo está em primeira pessoa.' do
+    it 'Assim, lendo o Texto A, é possível identificar 227 verbos no texto' do
+      count_verbs(@words_a).should == 227
+    end
+
+    it 'dos quais 167 estão em primeira pessoa' do
+      count_first_person_verbs(@words_a).should == 167
+    end
+
+    it 'Já no Texto B, quantos são os verbos?' do
+     puts ''
+     puts "Existem #{count_verbs(@words_b)} verbos em B"
+     puts "Existem #{count_first_person_verbs(@words_b)} verbos em primeira pessoa em B"
+    end
   end
   
 end

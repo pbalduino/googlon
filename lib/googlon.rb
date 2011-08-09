@@ -112,3 +112,19 @@ BAR = ('a'..'z').to_a - FOO
 def count_prepositions(words)
   words.count{|word| word.size == 4 && !word.include?('h') && FOO.include?(word[-1])}
 end
+
+def count_verbs(words)
+  list_verbs(words).size
+end
+
+def count_first_person_verbs(words)
+  list_first_person_verbs(words).size
+end
+
+def list_verbs(words)
+  words.delete_if{|word| word.size < 6 }.delete_if{|word| FOO.include?(word[-1])}
+end
+
+def list_first_person_verbs(words)
+  list_verbs(words).delete_if {|word| FOO.include? word[0]}
+end

@@ -147,6 +147,14 @@ def convert_number(number)
   result
 end
 
+def pretty_numbers(words)
+  list = []
+  words.each {|word| list << convert_number(word) }
+  list = list.uniq.delete_if{|number| number < 489954 || number % 4 != 0}
+  list.size
+
+end
+
 private
 def list_verbs(words)
   words.delete_if{|word| word.size < 6 }.delete_if{|word| FOO.include?(word[-1])}
